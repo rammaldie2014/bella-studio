@@ -1,0 +1,26 @@
+@use '../../../../shared/styles/actions' as actions;
+:host { display: block; }
+.contact { padding: 5rem 2rem; background: var(--color-white); scroll-margin-top: 1.5rem; }
+.contact__inner { max-width: 760px; margin-inline: auto; }
+header { text-align: center; margin-bottom: 2.5rem; }
+.eyebrow { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em; }
+h2 { font-size: clamp(2.25rem, 4vw, 3.25rem); font-weight: 400; margin: 0.75rem 0 1rem; }
+header > p:last-child { font-size: 0.95rem; max-width: 34rem; margin-inline: auto; }
+form { padding: 2rem; border: 1px solid var(--color-secondary); border-radius: 3px; background: var(--color-background); }
+.fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+.field { min-width: 0; }
+.field--full { grid-column: 1 / -1; }
+label { display: block; margin-bottom: 0.5rem; font-size: 0.875rem; font-weight: 500; span { font-weight: 400; } }
+input, select, textarea { display: block; width: 100%; min-width: 0; min-height: 48px; font-size: 1rem; }
+textarea { resize: vertical; }
+[aria-invalid='true'] { border-width: 2px; }
+.error { font-size: 0.8rem; margin: 0.5rem 0 0; font-weight: 500; }
+.form-note { font-size: 0.75rem; margin: 0 0 1.5rem; }
+#contact-delivery { margin-top: 1.5rem; }
+.pending { padding: 0.75rem; background: var(--color-secondary); font-size: 0.8rem; margin-bottom: 1.5rem; }
+.submit { @include actions.action; gap: 1rem; width: 100%; &:disabled { background: #655956; } }
+@media (max-width: 599px) {
+  .contact { padding: 3rem 1.5rem; }
+  form { padding: 1.25rem; }
+  .fields { grid-template-columns: minmax(0, 1fr); }
+}

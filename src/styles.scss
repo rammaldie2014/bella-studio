@@ -1,1 +1,124 @@
-/* You can add global styles to this file, and also import other style files */
+// Brand palette and typography.
+$color-primary: #332a28;
+$color-secondary: #e8cfcb;
+$color-accent: #c3a47a;
+$color-background: #f8f4ef;
+$color-white: #ffffff;
+
+$font-body: 'Inter', sans-serif;
+$font-heading: 'Playfair Display', Georgia, serif;
+
+// Public tokens shared by all Angular components.
+:root {
+  --color-primary: #{$color-primary};
+  --color-secondary: #{$color-secondary};
+  --color-accent: #{$color-accent};
+  --color-background: #{$color-background};
+  --color-white: #{$color-white};
+  --font-body: #{$font-body};
+  --font-heading: #{$font-heading};
+}
+
+// Document foundations.
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-background);
+  color: var(--color-primary);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  overflow-wrap: break-word;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+// Elements inherit the brand while keeping native interaction semantics.
+a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  text-decoration-thickness: 0.125em;
+}
+
+button,
+input,
+textarea,
+select {
+  max-width: 100%;
+  color: inherit;
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+input,
+textarea,
+select {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-primary);
+  border-radius: 0.25rem;
+  background-color: var(--color-white);
+}
+
+textarea {
+  min-height: 8rem;
+  resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: inherit;
+  opacity: 0.7;
+}
+
+:where(a, button, input, textarea, select):focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+img,
+picture,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+img,
+video {
+  height: auto;
+}
+
+// Respect accessibility preferences when navigating anchor links.
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

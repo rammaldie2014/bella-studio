@@ -1,0 +1,33 @@
+<section id="portafolio" class="portfolio" aria-labelledby="portfolio-title">
+  <div class="portfolio__inner">
+    <header>
+      <span class="eyebrow">NUESTRO TRABAJO</span>
+      <h2 id="portfolio-title">Galería de Belleza</h2>
+      <p>Cada rostro cuenta una historia única</p>
+      <p class="demo-note">Galería demostrativa: fotografías de inspiración, no trabajos reales de Bella Studio.</p>
+    </header>
+    <div class="filters" role="group" aria-label="Filtrar fotografías por categoría">
+      @for (filter of filters; track filter.value) {
+        <button type="button" [attr.aria-pressed]="activeFilter() === filter.value"
+          aria-controls="portfolio-gallery" (click)="selectFilter(filter.value)">{{ filter.label }}</button>
+      }
+    </div>
+    <p class="result-count" role="status">{{ filteredItems().length }} fotografías · {{ activeLabel() }}</p>
+    <div id="portfolio-gallery" class="gallery">
+      @for (item of filteredItems(); track item.id; let index = $index) {
+        <button type="button" class="gallery__card" aria-haspopup="dialog"
+          [attr.aria-label]="'Ampliar ' + item.title + ', categoría ' + labels[item.category]"
+          (click)="openItem(index, $event)">
+          <img [src]="item.imageUrl" [alt]="item.imageAlt" width="1000" height="1250" loading="lazy" decoding="async">
+          <span class="gallery__caption">
+            <span><small>{{ labels[item.category] }}</small><strong>{{ item.title }}</strong></span>
+            <span class="expand" aria-hidden="true">↗</span>
+          </span>
+        </button>
+      }
+    </div>
+  </div>
+</section>
+@if (selectedIndex() !== null) {
+  <app-portfolio-lightbox [items]="filteredItems()" [initialIndex]="selectedIndex()!" (dismissed)="selectedIndex.set(null)" />
+}

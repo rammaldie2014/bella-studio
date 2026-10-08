@@ -1,0 +1,15 @@
+@if (url) {
+  <a class="floating-whatsapp" [href]="url" target="_blank" rel="noopener noreferrer"
+    aria-label="Consultar con Bella Studio por WhatsApp (nueva pestaña)">
+    <img src="icons/whatsapp.svg" width="30" height="30" alt="" aria-hidden="true">
+  </a>
+} @else {
+  <button class="floating-whatsapp" type="button" aria-label="Consultar disponibilidad de WhatsApp"
+    aria-controls="whatsapp-notice" [attr.aria-expanded]="noticeOpen()"
+    (click)="noticeOpen.set(!noticeOpen())">
+    <img src="icons/whatsapp.svg" width="30" height="30" alt="" aria-hidden="true">
+  </button>
+  <div id="whatsapp-notice" class="notice" [hidden]="!noticeOpen()" role="status" aria-live="polite">
+    WhatsApp todavía no está disponible. Pronto podrás consultar por este medio.
+  </div>
+}

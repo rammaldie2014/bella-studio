@@ -1,5 +1,7 @@
 # BellaStudio
 
+Production audit and Cloudflare Pages preparation: [docs/production-readiness.md](docs/production-readiness.md).
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.6.
 
 ## Development server

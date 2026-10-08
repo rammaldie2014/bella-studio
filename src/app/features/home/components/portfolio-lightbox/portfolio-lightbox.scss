@@ -1,0 +1,25 @@
+dialog {
+  width: min(44rem, calc(100% - 2rem)); max-width: calc(100% - 2rem);
+  max-height: calc(100dvh - 2rem); padding: 0; border: 1px solid var(--color-secondary);
+  border-radius: 4px; background: var(--color-background); color: var(--color-primary);
+  overflow: auto; overscroll-behavior: contain;
+  &::backdrop { background: rgb(25 20 19 / 85%); }
+}
+.lightbox { position: relative; padding: 1rem; }
+img { width: 100%; height: min(52dvh, 36rem); object-fit: contain; background: var(--color-primary); }
+button {
+  min-width: 48px; min-height: 48px; border: 1px solid var(--color-primary);
+  background: var(--color-background); color: var(--color-primary); border-radius: 2px;
+  &:hover { background: var(--color-secondary); }
+}
+.close { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 1.25rem; }
+.details { padding: 1rem 0; }
+.category { margin: 0 0 0.35rem; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; }
+h2 { margin: 0; font-size: clamp(1.5rem, 5vw, 2rem); font-weight: 500; }
+.description { margin: 0.5rem 0 0; font-size: 0.85rem; }
+.controls { display: flex; justify-content: space-between; gap: 1rem; button { padding-inline: 1rem; font-size: 0.875rem; } }
+.demo-note { font-size: 0.65rem; margin: 1rem 0 0; }
+@media (max-width: 420px) {
+  .lightbox { padding: 0.75rem; }
+  .controls { gap: 0.5rem; button { padding-inline: 0.75rem; } }
+}

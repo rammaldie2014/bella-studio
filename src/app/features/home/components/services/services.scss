@@ -1,0 +1,17 @@
+:host { display: block; }
+.services { padding: 5rem 2rem; background: var(--color-background); scroll-margin-top: 1.5rem; }
+.services__inner { max-width: 1216px; margin-inline: auto; }
+header { text-align: center; margin-bottom: 3rem; }
+.eyebrow { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em; }
+h2 { font-size: clamp(2.25rem, 4vw, 3.25rem); font-weight: 400; margin: 0.75rem 0 1rem; }
+header p { margin: 0; font-size: 0.95rem; }
+.services__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; }
+.image-note { margin: 1.5rem 0 0; font-size: 0.7rem; text-align: center; }
+@media (max-width: 1099px) {
+  .services__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 599px) {
+  .services { padding: 3rem 1.5rem; }
+  header { margin-bottom: 2rem; }
+  .services__grid { grid-template-columns: minmax(0, 1fr); }
+}

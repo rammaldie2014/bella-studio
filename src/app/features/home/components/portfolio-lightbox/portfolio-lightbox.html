@@ -1,0 +1,19 @@
+<dialog #dialog aria-labelledby="lightbox-title" aria-describedby="lightbox-demo"
+  (cancel)="onCancel($event)" (click)="onBackdropClick($event)" (keydown)="onKeydown($event)">
+  <div class="lightbox">
+    <button #closeButton type="button" class="close" aria-label="Cerrar imagen ampliada" (click)="dismissed.emit()">✕</button>
+    @if (current(); as item) {
+      <img [src]="item.imageUrl" [alt]="item.imageAlt" width="1000" height="1250">
+      <div class="details" aria-live="polite" aria-atomic="true">
+        <p class="category">{{ labels[item.category] }} · {{ index() + 1 }} de {{ items().length }}</p>
+        <h2 id="lightbox-title">{{ item.title }}</h2>
+        @if (item.description) { <p class="description">{{ item.description }}</p> }
+      </div>
+      <div class="controls">
+        <button type="button" aria-label="Imagen anterior" (click)="move(-1)">← <span>Anterior</span></button>
+        <button type="button" aria-label="Imagen siguiente" (click)="move(1)"><span>Siguiente</span> →</button>
+      </div>
+    }
+    <p id="lightbox-demo" class="demo-note">Fotografía demostrativa. No representa un trabajo de Bella Studio.</p>
+  </div>
+</dialog>

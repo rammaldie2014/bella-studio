@@ -1,0 +1,51 @@
+@use '../../../../shared/styles/actions' as actions;
+
+:host { display: block; }
+.hero {
+  max-width: 1280px; margin-inline: auto; padding: 4.5rem 2rem 3rem;
+  display: grid; grid-template-columns: 1.05fr 1fr; align-items: center;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+.hero__content { min-width: 0; padding-block: 1.5rem; }
+.eyebrow {
+  display: flex; align-items: center; gap: 0.8rem; margin: 0 0 1.75rem;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em;
+  span { width: 2rem; height: 1px; background: var(--color-accent); }
+}
+h1 {
+  margin: 0; max-width: 10ch; font-size: clamp(3rem, 5.4vw, 4.9rem);
+  font-weight: 400; letter-spacing: -0.045em; line-height: 1.1;
+  em { font-weight: 400; }
+}
+.description { max-width: 29rem; margin: 1.75rem 0 2rem; font-size: 0.95rem; line-height: 1.85; }
+.actions { display: flex; flex-wrap: wrap; gap: 1rem; }
+.button {
+  @include actions.action;
+  gap: 1.5rem;
+  &--secondary { background: transparent; color: var(--color-primary); &:hover { background: var(--color-secondary); } }
+}
+.demo-note { font-size: 0.7rem; margin-top: 0.85rem; }
+.signature {
+  display: flex; align-items: center; gap: 1rem; margin-top: 3.5rem;
+  font-family: var(--font-heading); font-style: italic; font-size: 1.1rem;
+  span { height: 1px; width: 3rem; background: var(--color-accent); }
+}
+.hero__visual {
+  min-width: 0; margin: 0; position: relative;
+  &::before { content: ''; position: absolute; inset: 1rem -0.75rem 2.5rem 1rem; border: 1px solid var(--color-accent); border-radius: 45% 45% 2px 2px; pointer-events: none; }
+  img { position: relative; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 42%; border-radius: 45% 45% 2px 2px; }
+  figcaption { margin-top: 1rem; font-size: 0.65rem; text-align: right; }
+}
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: minmax(0, 1fr); padding: 2.5rem 1.5rem; gap: 2.5rem; }
+  .hero__content { padding: 0; }
+  h1 { max-width: 13ch; font-size: clamp(3rem, 8vw, 4.5rem); }
+  .hero__visual { width: 100%; max-width: 32rem; justify-self: center; }
+  .signature { margin-top: 2rem; }
+}
+@media (max-width: 420px) {
+  .actions { flex-direction: column; align-items: stretch; }
+  .eyebrow { font-size: 0.65rem; letter-spacing: 0.15em; }
+}

@@ -1,0 +1,56 @@
+<section id="contacto" class="contact" aria-labelledby="contact-title">
+  <div class="contact__inner">
+    <header>
+      <p class="eyebrow">HABLEMOS DE TU PRÓXIMO LOOK</p>
+      <h2 id="contact-title">¿Lista para brillar?</h2>
+      <p>Cuéntanos sobre tu evento y te ayudaremos a encontrar el maquillaje perfecto.</p>
+    </header>
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate aria-labelledby="contact-title">
+      <p class="form-note">Los campos con * son obligatorios.</p>
+      <div class="fields">
+        <div class="field">
+          <label for="contact-name">Nombre *</label>
+          <input id="contact-name" type="text" autocomplete="given-name" formControlName="name" required minlength="2"
+            [attr.aria-invalid]="form.controls.name.touched && form.controls.name.invalid"
+            [attr.aria-describedby]="form.controls.name.touched && form.controls.name.invalid ? 'name-error' : null">
+          @if (form.controls.name.touched && form.controls.name.invalid) {
+            <p id="name-error" class="error" role="alert">{{ form.controls.name.hasError('required') ? 'Ingresa tu nombre.' : 'El nombre debe tener al menos 2 caracteres.' }}</p>
+          }
+        </div>
+        <div class="field">
+          <label for="contact-service">Servicio *</label>
+          <select id="contact-service" formControlName="service" required
+            [attr.aria-invalid]="form.controls.service.touched && form.controls.service.invalid"
+            [attr.aria-describedby]="form.controls.service.touched && form.controls.service.invalid ? 'service-error' : null">
+            <option value="">Selecciona un servicio</option>
+            @for (service of services; track service.id) {
+              <option [value]="service.id">{{ service.title }}</option>
+            }
+          </select>
+          @if (form.controls.service.touched && form.controls.service.invalid) {
+            <p id="service-error" class="error" role="alert">Selecciona un servicio del catálogo.</p>
+          }
+        </div>
+        <div class="field field--full">
+          <label for="contact-date">Fecha del evento <span>(opcional)</span></label>
+          <input id="contact-date" type="date" formControlName="date" (input)="checkDateInput($event)"
+            [attr.aria-invalid]="form.controls.date.touched && form.controls.date.invalid"
+            [attr.aria-describedby]="form.controls.date.touched && form.controls.date.invalid ? 'date-error' : null">
+          @if (form.controls.date.touched && form.controls.date.invalid) {
+            <p id="date-error" class="error" role="alert">Ingresa una fecha válida.</p>
+          }
+        </div>
+        <div class="field field--full">
+          <label for="contact-message">Mensaje <span>(opcional)</span></label>
+          <textarea id="contact-message" formControlName="message" rows="4" placeholder="Cuéntanos qué tienes en mente"></textarea>
+        </div>
+      </div>
+      <p class="form-note" id="contact-delivery">Se abrirá WhatsApp con tu consulta para que puedas revisarla y enviarla. Este sitio no guarda los datos del formulario.</p>
+      @if (!whatsappAvailable) {
+        <p id="contact-pending" class="pending" role="status">Demo: WhatsApp pendiente de configurar. El envío está deshabilitado.</p>
+      }
+      <button class="submit" type="submit" [disabled]="form.invalid || !whatsappAvailable"
+        [attr.aria-describedby]="whatsappAvailable ? 'contact-delivery' : 'contact-pending'">Consultar por WhatsApp <span aria-hidden="true">↗</span></button>
+    </form>
+  </div>
+</section>

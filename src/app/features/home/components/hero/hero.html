@@ -1,0 +1,25 @@
+<section class="hero" id="inicio" aria-labelledby="hero-title">
+  <div class="hero__content">
+    <p class="eyebrow"><span aria-hidden="true"></span>BELLEZA &amp; ELEGANCIA</p>
+    <h1 id="hero-title">Resalta tu <em>belleza natural</em></h1>
+    <p class="description">Maquillaje profesional para momentos inolvidables. Realzamos tu estilo con técnicas personalizadas y acabados elegantes.</p>
+    <div class="actions">
+      @if (booking.whatsappUrl; as url) {
+        <a class="button" [href]="url" target="_blank" rel="noopener noreferrer">Reserva tu cita<span class="sr-only"> por WhatsApp (nueva pestaña)</span><span aria-hidden="true">↗</span></a>
+      } @else {
+        <button class="button" type="button" disabled aria-describedby="hero-booking-note">Reserva tu cita<span aria-hidden="true">↗</span></button>
+      }
+      <a class="button button--secondary" href="#servicios">Ver servicios<span aria-hidden="true">→</span></a>
+    </div>
+    @if (!booking.whatsappUrl) {
+      <p id="hero-booking-note" class="demo-note">Demo: reservas por WhatsApp pendientes de configurar.</p>
+    }
+    <div class="signature" aria-hidden="true"><span></span>Tu esencia, nuestro arte.</div>
+  </div>
+  <figure class="hero__visual">
+    <img src="images/hero-makeup.webp" width="1000" height="1500"
+      alt="Retrato de una mujer con sombras cálidas doradas y naranjas, pestañas definidas y labios en tono natural."
+      fetchpriority="high" loading="eager">
+    <figcaption>Fotografía de inspiración · Marlon Alves / Pexels</figcaption>
+  </figure>
+</section>

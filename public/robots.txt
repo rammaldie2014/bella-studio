@@ -1,0 +1,5 @@
+# Public demonstration: crawlers may fetch pages to read the noindex meta tag.
+User-agent: *
+Allow: /
+
+# Sitemap pending: add its absolute HTTPS URL only after a public domain is confirmed.

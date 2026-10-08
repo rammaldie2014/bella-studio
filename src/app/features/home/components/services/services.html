@@ -1,0 +1,15 @@
+<section id="servicios" class="services" aria-labelledby="services-title">
+  <div class="services__inner">
+    <header>
+      <span class="eyebrow">EL ARTE DE REALZARTE</span>
+      <h2 id="services-title">Nuestros Servicios</h2>
+      <p>Cada ocasión merece un maquillaje especial</p>
+    </header>
+    <div class="services__grid">
+      @for (service of services; track service.id) {
+        <app-service-card [service]="service" />
+      }
+    </div>
+    <p class="image-note">Fotografías de inspiración. No representan trabajos realizados por Bella Studio.</p>
+  </div>
+</section>

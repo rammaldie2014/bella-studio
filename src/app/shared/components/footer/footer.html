@@ -1,0 +1,27 @@
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <a class="brand" href="#inicio">Bella <em>Studio</em></a>
+      <p>Maquillaje profesional que realza tu esencia para momentos inolvidables.</p>
+    </div>
+    <nav aria-label="Navegación del pie de página">
+      <h2>Explora</h2>
+      <ul>
+        @for (link of links; track link.href) {
+          <li><a [href]="link.href">{{ link.label }}</a></li>
+        }
+      </ul>
+    </nav>
+    @if (socialLinks.length) {
+      <nav aria-label="Redes sociales">
+        <h2>Síguenos</h2>
+        <ul>
+          @for (link of socialLinks; track link.label) {
+            <li><a [href]="link.url" target="_blank" rel="noopener noreferrer" [attr.aria-label]="link.label + ' (nueva pestaña)'">{{ link.label }} ↗</a></li>
+          }
+        </ul>
+      </nav>
+    }
+  </div>
+  <p class="copyright">© {{ year }} Bella Studio · Web demostrativa.</p>
+</footer>
